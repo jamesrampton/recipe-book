@@ -1,0 +1,8 @@
+.python-version
+
+# Django
+media/*
+!media/.htaccess
+static/*
+!static/.htaccess
+logs/*

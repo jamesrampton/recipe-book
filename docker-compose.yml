@@ -1,0 +1,49 @@
+version: "3.9"
+
+volumes:
+  static:
+  recipe_book_media:
+    external: true
+  logs:
+  recipe_book_db:
+    external: true
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - recipe_book_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    restart: always
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    # command: gunicorn recipe_book.wsgi:application --bind 0.0.0.0:8000 --timeout 900
+    volumes:
+      - static:/opt/static/
+      - logs:/opt/logs/
+      - ./:/opt/
+      - recipe_book_media:/opt/media/
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+  nginx:
+    restart: always
+    image: nginx:latest
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+    volumes:
+      - recipe_book_media:/media
+      - static:/static
+      - ./nginx/sites-enabled:/etc/nginx/conf.d/
