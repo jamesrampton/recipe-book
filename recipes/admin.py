@@ -1,22 +1,22 @@
+from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 
 from recipes.models import Ingredient, MethodStep, Note, Recipe
 
 
-class IngredientInline(admin.StackedInline):
+class IngredientInline(SortableInlineAdminMixin, admin.StackedInline):
     model = Ingredient
-    extra = 1
+    extra = 0
 
 
-class MethodStepInline(admin.StackedInline):
+class MethodStepInline(SortableInlineAdminMixin, admin.StackedInline):
     model = MethodStep
-    extra = 1
+    extra = 0
 
 
 class NoteInline(admin.StackedInline):
     model = Note
-    extra = 1
-
+    extra = 0
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):

@@ -29,6 +29,10 @@ class Ingredient(models.Model):
     amount = models.CharField(max_length=128, null=True, blank=True)
     preparation = models.CharField(max_length=128, null=True, blank=True)
     team = models.CharField(max_length=128, null=True, blank=True)
+    order = models.PositiveIntegerField(default=0, null=False, blank=False)
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self) -> str:
         rep = self.name
@@ -40,7 +44,10 @@ class Ingredient(models.Model):
 class MethodStep(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     text = models.TextField()
+    order = models.PositiveIntegerField(default=0, null=False, blank=False)
 
+    class Meta:
+        ordering = ['order']
 
 class Note(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
