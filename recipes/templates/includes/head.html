@@ -1,0 +1,37 @@
+{% load compress %}
+{% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="author" href="humans.txt" />
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for www.jamesrampton.uk" href="/feed.xml" />
+<title>{% block title %}Recipe Book{% endblock %}</title>
+
+<!-- favicons -->
+<link rel="icon" href="{% static '/images/favicon/favicon-32.png' %}" sizes="32x32">
+<link rel="icon" href="{% static '/images/favicon/favicon-128.png' %}" sizes="128x128">
+<link rel="icon" href="{% static '/images/favicon/favicon-192.png' %}" sizes="192x192">
+
+<!-- Android -->
+<link rel="shortcut icon" sizes="196x196" href="{% static '/images/favicon/favicon-196.png' %}">
+
+<!-- iOS -->
+<link rel="apple-touch-icon" href="{% static '/images/favicon/favicon-152.png' %}" sizes="152x152">
+<link rel="apple-touch-icon" href="{% static '/images/favicon/favicon-180.png' %}" sizes="180x180">
+<!-- macOS -->
+<link rel="mask-icon" href="{% static '/images/favicon/pinned_icon.svg' %}" color="#333333">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Sue+Ellen+Francisco&display=swap" rel="stylesheet">
+{% comment %}
+{{ $sass := resources.Get "sass/main.scss" }}
+{{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
+{{ $style := $sass | resources.ToCSS $options | resources.Fingerprint }}
+{% endcomment %}
+{% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static "scss/screen.scss" %}" />
+{% endcompress %}
+<link rel="stylesheet" type="text/css" href="">
+{% if .Site.Params.noSEO %}
+    <meta name="robots" content="noindex, nofollow">
+{% endif %}

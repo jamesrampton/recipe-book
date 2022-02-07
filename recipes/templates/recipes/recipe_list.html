@@ -2,12 +2,16 @@
 
 {% block content%}
     <h1>Recipes</h1>
+
     {% for recipe in object_list %}
-        <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>
-        <p>Serves: {{ recipe.serves }}</p>
-        <p>Prep and cooking time: {{ recipe.prep_and_cooking_time }} minutes</p>
-        <p>Carb portions: {{ recipe.carb_portions|floatformat }}</p>
-        <p>{{ recipe.diet }}</p>
-        <img src="{{ recipe.image.url }}">
+        <div class="row">
+            <div class="col-3">
+                <img src="{{ recipe.image.url }}">
+            </div>
+            <div class="col-9">
+                <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>
+            </div>
+        </div>
     {% endfor %}
-{% endblock %}
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: rgba($colour_accent, 0.2);
+}
+
+body {
+    font-family: $font-family;
+    font-size: 20px;
+    color: $colour_main;
+    background-color: $colour_bright;
+}
+
+a,
+a:visited {
+    text-decoration: underline;
+    text-decoration-color: $colour_accent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 1px;
+    color: $colour_main;
+    transition: background-color 0.2s linear;
+
+    &.no-border {
+        border-bottom: none;
+    }
+}
+
+a:hover {
+    background-color: rgba($colour_accent, 0.2);
+}
+
+ul {
+    list-style-type: "›   ";
+}
+
+ol li {
+    margin-bottom: 3em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
