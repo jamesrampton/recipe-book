@@ -6,4 +6,6 @@
 
 `docker-compose build`
 
+`echo "SECRET_KEY='supersecret'" > .env`
+
 `docker-compose up`

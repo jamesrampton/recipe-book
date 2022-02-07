@@ -34,6 +34,7 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - SECRET_KEY=${SECRET_KEY}
     depends_on:
       - db
   nginx:

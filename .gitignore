@@ -6,3 +6,4 @@ media/*
 static/*
 !static/.htaccess
 logs/*
+.env
