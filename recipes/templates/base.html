@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "includes/head.html" %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 header-col">
+                    {% include "includes/header.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 top-col">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% include "includes/footer.html" %}
+                </div>
+            </div>
+        </div>
+        <script>
+            var hamburger = document.querySelector(".hamburger");
+            var navMenu = document.querySelector(".nav-menu");
+            hamburger.addEventListener("click", mobileMenu);
+
+            function mobileMenu() {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+                document.body.classList.toggle('no-overflow');
+            }
+        </script>
+    </body>
+</html>

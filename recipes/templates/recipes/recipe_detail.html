@@ -1,0 +1,6 @@
+<h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
+<p>Serves: {{ object.serves }}</p>
+<p>Prep and cooking time: {{ object.prep_and_cooking_time }} minutes</p>
+<p>Carb portions: {{ object.carb_portions|floatformat }}</p>
+<p>{{ object.diet }}</p>
+<img src="{{ object.image.url }}">

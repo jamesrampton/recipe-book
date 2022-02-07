@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Recipe(models.Model):
@@ -18,6 +19,9 @@ class Recipe(models.Model):
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse("recipe_detail", kwargs={"slug": self.slug})
 
     def __str__(self) -> str:
         return self.title
@@ -48,6 +52,7 @@ class MethodStep(models.Model):
 
     class Meta:
         ordering = ['order']
+
 
 class Note(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
