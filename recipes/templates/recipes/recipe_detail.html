@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% load recipe_tags %}
-
 {% block content %}
     <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
     <p>Serves: {{ object.serves }}</p>
