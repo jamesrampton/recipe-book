@@ -20,6 +20,7 @@ class Recipe(models.Model):
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
+    method = models.TextField(default="Get cooking!")
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
@@ -34,6 +35,9 @@ class Recipe(models.Model):
 
     def get_ingredients_by_location(self):
         return self._get_ingredients_by_attr('location')
+
+    def get_method_lines(self):
+        return [line for line in self.method.splitlines() if line]
 
     def get_absolute_url(self):
         return reverse("recipe_detail", kwargs={"slug": self.slug})
@@ -68,15 +72,6 @@ class Ingredient(models.Model):
         if self.amount:
             rep = f"{self.amount} {self.name}"
         return rep
-
-
-class MethodStep(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    text = models.TextField()
-    order = models.PositiveIntegerField(default=0, null=False, blank=False)
-
-    class Meta:
-        ordering = ['order']
 
 
 class Note(models.Model):

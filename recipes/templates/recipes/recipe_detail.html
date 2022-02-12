@@ -13,8 +13,8 @@
 
     <h2>Method</h2>
     <ol>
-        {% for step in object.methodstep_set.all %}
-            <li>{{ step.text }}</li>
+        {% for line in object.get_method_lines %}
+            <li>{{line}}</li>
         {% endfor %}
     </ol>
 {% endblock content %}
