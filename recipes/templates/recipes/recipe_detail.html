@@ -2,10 +2,10 @@
 
 {% block content %}
     <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
-    <p>Serves: {{ object.serves }}</p>
-    <p>Prep and cooking time: {{ object.prep_and_cooking_time }} minutes</p>
-    <p>Carb portions: {{ object.carb_portions|floatformat }}</p>
-    <p>{{ object.diet }}</p>
+    <p>Serves: <strong>{{ object.serves }}</strong></p>
+    <p>Prep and cooking time: <strong>{{ object.prep_and_cooking_time }} minutes</strong></p>
+    <p>Carb portions: <strong>{{ object.carb_portions|floatformat }}</strong></p>
+    <p><strong>{{ object.diet|capfirst }}</strong></p>
     <img src="{{ object.image.url }}">
     <h2>Ingredients</h2>
 
