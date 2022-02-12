@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% load recipe_tags %}
+
 {% block content %}
     <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
     <p>Serves: {{ object.serves }}</p>
@@ -7,19 +10,9 @@
     <p>{{ object.diet }}</p>
     <img src="{{ object.image.url }}">
     <h2>Ingredients</h2>
-    {% for ingredient in object.ingredient_set.all %}
-        {% ifchanged ingredient.team %}
-            {% if forloop.counter > 1 %}
-                </ul>
-            {% endif %}
-            <h3>Team {{ ingredient.team }}</h3>
-            <ul>
-        {% endifchanged %}
-        <li>{%if ingredient.amount %}{{ ingredient.amount|capfirst }} {% endif %}{{ ingredient.name|lower }}{% if ingredient.preparation %}, {{ ingredient.preparation|lower }}{% endif %}</li>
-        {% if forloop.last %}
-            </ul>
-        {% endif %}
-    {% endfor %}
+
+    {% recipe_ingredients object %}
+    
     <h2>Method</h2>
     <ol>
         {% for step in object.methodstep_set.all %}
