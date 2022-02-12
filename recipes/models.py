@@ -27,8 +27,18 @@ class Recipe(models.Model):
         return self.title
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=128)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    location = models.ForeignKey(
+        Location, on_delete=models.SET_NULL, null=True, blank=True
+    )
     name = models.CharField(max_length=128)
     amount = models.CharField(max_length=128, null=True, blank=True)
     preparation = models.CharField(max_length=128, null=True, blank=True)
