@@ -11,8 +11,8 @@
     <img src="{{ object.image.url }}">
     <h2>Ingredients</h2>
 
-    {% recipe_ingredients_by_location object %}
-    
+    {% include 'includes/recipe_ingredients_by_location.html' %}
+
     <h2>Method</h2>
     <ol>
         {% for step in object.methodstep_set.all %}

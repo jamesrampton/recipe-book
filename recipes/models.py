@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from django.db import models
 from django.urls import reverse
 
@@ -19,6 +20,20 @@ class Recipe(models.Model):
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
+
+    def _get_ingredients_by_attr(self, att):
+        ingredients_data = OrderedDict()
+        ingredients = self.ingredient_set.all().order_by(att, 'order')
+        for ingredient in ingredients:
+            ingredients_data.setdefault(getattr(ingredient, att), []).append(ingredient)
+
+        return ingredients_data
+
+    def get_ingredients_by_team(self):
+        return self._get_ingredients_by_attr('team')
+
+    def get_ingredients_by_location(self):
+        return self._get_ingredients_by_attr('location')
 
     def get_absolute_url(self):
         return reverse("recipe_detail", kwargs={"slug": self.slug})

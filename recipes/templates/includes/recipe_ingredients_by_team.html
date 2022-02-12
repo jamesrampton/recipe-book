@@ -1,6 +1,6 @@
-{% for location, ingredients in ingredients_data.items %}
+{% for team, ingredients in object.get_ingredients_by_team.items %}
     <div>
-        <h3>From {% if location %}the {{ location|lower }}{% else %}somewhere in the kitchen{% endif %}</h3>
+        <h3>Team {{ team }}</h3>
         <ul>
             {% for ingredient in ingredients %}
                 <li>{%if ingredient.amount %}{{ ingredient.amount|capfirst }} {% endif %}{{ ingredient.name|lower }}{% if ingredient.preparation %}, {{ ingredient.preparation|lower }}{% endif %}</li>
