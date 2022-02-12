@@ -17,4 +17,13 @@
             <li>{{line}}</li>
         {% endfor %}
     </ol>
+    {% if object.note_set.all %}
+        <h2>Notes</h2>
+        {% for note in object.note_set.all %}
+            <p><strong>{{ note.date|date:"d F Y" }}</strong> &mdash; {{ note.text }}</p>
+            {% if not forloop.last %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endblock content %}
