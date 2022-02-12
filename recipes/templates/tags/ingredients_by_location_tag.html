@@ -1,0 +1,10 @@
+{% for location, ingredients in ingredients_data.items %}
+    <div>
+        <h3>From {% if location %}the {{ location|lower }}{% else %}somewhere in the kitchen{% endif %}</h3>
+        <ul>
+            {% for ingredient in ingredients %}
+                <li>{%if ingredient.amount %}{{ ingredient.amount|capfirst }} {% endif %}{{ ingredient.name|lower }}{% if ingredient.preparation %}, {{ ingredient.preparation|lower }}{% endif %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
