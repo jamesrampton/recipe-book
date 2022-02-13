@@ -1,29 +1,73 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
-    <p>Serves: <strong>{{ object.serves }}</strong></p>
-    <p>Prep and cooking time: <strong>{{ object.prep_and_cooking_time }} minutes</strong></p>
-    <p>Carb portions: <strong>{{ object.carb_portions|floatformat }}</strong></p>
-    <p><strong>{{ object.diet|capfirst }}</strong></p>
     <img src="{{ object.image.url }}">
-    <h2>Ingredients</h2>
-
-    {% include 'includes/recipe_ingredients_by_location.html' %}
-
-    <h2>Method</h2>
-    <ol>
-        {% for line in object.get_method_lines %}
-            <li>{{line}}</li>
-        {% endfor %}
-    </ol>
-    {% if object.note_set.all %}
-        <h2>Notes</h2>
-        {% for note in object.note_set.all %}
-            <p><strong>{{ note.date|date:"d F Y" }}</strong> &mdash; {{ note.text }}</p>
-            {% if not forloop.last %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
+                <p><a href="javascript:void(0)" id="cook">Cook</a></p>
+                <p>Serves: <strong>{{ object.serves }}</strong></p>
+                <p>Prep and cooking time: <strong>{{ object.prep_and_cooking_time }} minutes</strong></p>
+                <p>Carb portions: <strong>{{ object.carb_portions|floatformat }}</strong></p>
+                <p><strong>{{ object.diet|capfirst }}</strong></p>
                 <hr>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+                
+                {% include 'includes/recipe_ingredients_by_location.html' %}
+
+                {% if object.note_set.all %}
+                    <h2>Notes</h2>
+                    {% for note in object.note_set.all %}
+                        <p><strong>{{ note.date|date:"d F Y" }}</strong> &mdash; {{ note.text }}</p>
+                        {% if not forloop.last %}
+                            <hr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="cook-modal" id="cook-modal">
+        <a href="javascript:void(0)" id="modal_close">&times;</a>
+        <div id="modal_ingredients" class="active">
+            {% include 'includes/recipe_ingredients_by_team.html' %}
+        </div>
+        <div id="modal_method">
+            <ol>
+                {% for line in object.get_method_lines %}
+                    <li>{{line}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="modal_tab_selector">
+            <a id="ingredients_tab_link" href="javascript:void(0)">ingredients</a> <a id="method_tab_link" href="javascript:void(0)">method</a>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            var $ingredientsTab = $('#modal_ingredients');
+            var $methodTab = $('#modal_method');
+            $('#cook').on('click', function(){
+                $('#cook-modal').addClass('active');
+                $('body').addClass('no-overflow-y');
+            });
+            $('#modal_close').on('click', function(){
+                $('#cook-modal').removeClass('active');
+                $('body').removeClass('no-overflow-y');
+            });
+            $('#modal_ingredients li').on('click', function(){
+                $(this).toggleClass('opacity-50');
+            })
+            $('#ingredients_tab_link').on('click', function(){
+                $ingredientsTab.addClass('active');
+                $methodTab.removeClass('active');
+            });
+            $('#method_tab_link').on('click', function(){
+                $methodTab.addClass('active');
+                $ingredientsTab.removeClass('active');
+            });
+        });
+
+    </script>
 {% endblock content %}

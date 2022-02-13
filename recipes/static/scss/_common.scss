@@ -10,7 +10,8 @@ body {
     font-family: $font-family;
     font-size: 20px;
     color: $colour_main;
-    background-color: $colour_bright;
+    // background-color: $colour_bright;
+    margin: 0;
 }
 
 a,
@@ -27,7 +28,7 @@ a:visited {
     }
 }
 
-a:hover {
+a:h§ {
     background-color: rgba($colour_accent, 0.2);
 }
 
@@ -37,10 +38,22 @@ ul {
 
 ol li {
     margin-bottom: 3em;
+    list-style-position: inside;
 }
 
+li::marker {
+    color: $colour_main_transprent;
+    font-weight: bold;
+}
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+}
+
+.no-overflow-y {
+    overflow-y: hidden !important;
+}
+
+.opacity-50 {
+    opacity: 0.5 !important;
 }

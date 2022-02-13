@@ -1,0 +1,62 @@
+.cook-modal {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    top:0;
+    height: 100vh;
+    background: $colour_white;
+    transition: transform 300ms ease, opacity 300ms ease;
+    transform: translateY(100vh);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    pointer-events: none;
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: initial;
+    }
+    #modal_ingredients {
+        padding: 2rem;
+        transition: transform 300ms ease;
+        height: 100vh;
+        transform: translateX(-100vw);
+        overflow-y: scroll;
+        position: absolute;
+        top: 0;
+        
+        &.active {
+            transform: translateX(0);
+        }
+    }
+    #modal_method {
+        padding: 2rem;
+        transition: transform 300ms ease;
+        height: 100vh;
+        transform: translateX(100vw);
+        overflow-y: scroll;
+        position: absolute;
+        top: 0;
+        &.active {
+            transform: translateX(0);
+        }
+    }
+    .modal_tab_selector {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        height: 2rem;
+        background-color: $colour_main;
+        text-align: center;
+        a {
+            color: $colour_bright;
+        }
+    }
+}
+
+#modal_close {
+    position: fixed;
+    z-index: 500;
+    top: 15px;
+    right: 15px;
+}
