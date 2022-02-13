@@ -9,6 +9,6 @@ admin.site.site_header = 'Recipe Book Admin'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login_required, RecipeListView.as_view()),
-    path('<slug:slug>', login_required, RecipeDetailView.as_view(), name="recipe_detail"),
+    path('', login_required(RecipeListView.as_view())),
+    path('<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
