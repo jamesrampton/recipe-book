@@ -29,7 +29,7 @@
     </div>
 
     <div class="cook-modal" id="cook-modal">
-        <a href="javascript:void(0)" id="modal_close">&times;</a>
+        <a href="javascript:void(0)" id="modal_close"></a>
         <div id="modal_ingredients" class="active">
             {% include 'includes/recipe_ingredients_by_team.html' %}
         </div>
@@ -49,6 +49,7 @@
             var $ingredientsTab = $('#modal_ingredients');
             var $methodTab = $('#modal_method');
             $('#cook').on('click', function(){
+                $(window).scrollTop(0);
                 $('#cook-modal').addClass('active');
                 $('body').addClass('no-overflow-y');
             });
@@ -66,7 +67,35 @@
             $('#method_tab_link').on('click', function(){
                 $methodTab.addClass('active');
                 $ingredientsTab.removeClass('active');
+                highlightCurrentStep();
             });
+
+            var $firstStep = $methodTab.find('li:first');
+            var $lastStep = $methodTab.find('li:last');
+            var cssStringFirst = 'calc(50vh - ' + $firstStep.outerHeight() + 'px)'
+            var cssStringLast = 'calc(50vh - ' + $lastStep.outerHeight() + 'px)'
+            $methodTab.css({'padding-top': cssStringFirst, 'padding-bottom': cssStringLast});
+
+            $methodTab.on('scroll', function(){
+                highlightCurrentStep();
+            });
+
+            function highlightCurrentStep() {
+                if ($methodTab.hasClass('active')) {
+                    $methodTab.find('li').each(function(el){
+                        el = $(this);
+                        var top_of_element = el.offset().top;
+                        var bottom_of_element = el.offset().top + el.outerHeight(true);
+                        var middle_of_screen = $(window).scrollTop() + ($(window).innerHeight()/2);
+                        var top_of_screen = $(window).scrollTop();
+                        if (bottom_of_element < middle_of_screen || top_of_element > middle_of_screen) {
+                            el.css({'opacity': '0.25'});
+                        } else {
+                            el.css({'opacity': '1'});
+                        }
+                    })
+                }
+            }
         });
 
     </script>

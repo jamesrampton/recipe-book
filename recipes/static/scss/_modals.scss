@@ -3,7 +3,7 @@
     position: absolute;
     left: 0;
     width: 100vw;
-    top:0;
+    top: 0;
     height: 100vh;
     background: $colour_white;
     transition: transform 300ms ease, opacity 300ms ease;
@@ -11,11 +11,13 @@
     overflow-y: scroll;
     overflow-x: hidden;
     pointer-events: none;
+
     &.active {
         opacity: 1;
         transform: translateY(0);
         pointer-events: initial;
     }
+
     #modal_ingredients {
         padding: 2rem;
         transition: transform 300ms ease;
@@ -24,11 +26,12 @@
         overflow-y: scroll;
         position: absolute;
         top: 0;
-        
+
         &.active {
             transform: translateX(0);
         }
     }
+
     #modal_method {
         padding: 2rem;
         transition: transform 300ms ease;
@@ -37,10 +40,12 @@
         overflow-y: scroll;
         position: absolute;
         top: 0;
+
         &.active {
             transform: translateX(0);
         }
     }
+
     .modal_tab_selector {
         position: absolute;
         bottom: 0;
@@ -48,8 +53,14 @@
         height: 2rem;
         background-color: $colour_main;
         text-align: center;
+
         a {
+            display: inline-block;
+            width: 49%;
             color: $colour_bright;
+            text-align: center;
+            text-decoration: none;
+            line-height: 2rem;
         }
     }
 }
@@ -59,4 +70,30 @@
     z-index: 500;
     top: 15px;
     right: 15px;
+    text-decoration: none;
+    line-height: 27px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    background-color: $colour_main_transprent;
+    border-radius: 50%;
+
+    &:before,
+    &:after {
+        position: absolute;
+        top: 6px;
+        left: 15px;
+        content: ' ';
+        height: 20px;
+        width: 2px;
+        background-color: $colour_bright;;
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
 }
