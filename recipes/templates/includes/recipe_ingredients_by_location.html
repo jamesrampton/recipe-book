@@ -3,7 +3,9 @@
         <h3>From {% if location %}the {{ location|lower }}{% else %}somewhere in the kitchen{% endif %}</h3>
         <ul>
             {% for ingredient in ingredients %}
-                {% include 'includes/ingredient_line_item.html' %}
+                {% with show_prep=False %}
+                    {% include 'includes/ingredient_line_item.html' %}
+                {% endwith %}
             {% endfor %}
         </ul>
     </div>

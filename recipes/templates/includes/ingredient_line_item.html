@@ -1,1 +1,1 @@
-<li>{% if ingredient.amount %}<strong>{{ ingredient.amount|capfirst }}</strong> {% endif %}{{ ingredient.name|lower }}{% if ingredient.preparation %} <em>{{ ingredient.preparation|lower }}</em>{% endif %}</li>
+<li>{% if ingredient.amount %}<strong>{{ ingredient.amount|capfirst }}</strong> {% endif %}{{ ingredient.name|lower }}{% if ingredient.preparation and show_prep %} <em>{{ ingredient.preparation|lower }}</em>{% endif %}</li>

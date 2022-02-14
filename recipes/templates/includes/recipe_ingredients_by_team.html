@@ -3,7 +3,9 @@
         <h3>Team {{ team }}</h3>
         <ul>
             {% for ingredient in ingredients %}
-                {% include 'includes/ingredient_line_item.html' %}
+                {% with show_prep=True %}
+                    {% include 'includes/ingredient_line_item.html' %}
+                {% endwith %}
             {% endfor %}
         </ul>
     </div>
