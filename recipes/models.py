@@ -30,6 +30,9 @@ class Recipe(models.Model):
 
         return ingredients_data
 
+    def display_carb_portions(self):
+        return f'{self.carb_portions:g}'
+
     def get_ingredients_by_team(self):
         return self._get_ingredients_by_attr('team')
 
