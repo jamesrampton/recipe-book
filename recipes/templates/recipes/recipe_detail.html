@@ -52,10 +52,12 @@
                 $(window).scrollTop(0);
                 $('#cook-modal').addClass('active');
                 $('body').addClass('no-overflow');
+                $('html').addClass('no-overflow');
             });
             $('#modal_close').on('click', function(){
                 $('#cook-modal').removeClass('active');
                 $('body').removeClass('no-overflow');
+                $('html').removeClass('no-overflow');
             });
             $('#modal_ingredients li').on('click', function(){
                 $(this).toggleClass('opacity-50');
