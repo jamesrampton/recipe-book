@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <img src="{{ object.image.url }}">
+    {% if object.image %}
+        <img src="{{ object.image.url }}">
+    {% endif%}
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -12,7 +14,7 @@
                 <p>Carb portions: <strong>{{ object.carb_portions|floatformat }}</strong></p>
                 <p><strong>{{ object.diet|capfirst }}</strong></p>
                 <hr>
-                
+
                 {% include 'includes/recipe_ingredients_by_location.html' %}
 
                 {% if object.note_set.all %}
