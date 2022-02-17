@@ -28,7 +28,7 @@
 {{ $style := $sass | resources.ToCSS $options | resources.Fingerprint }}
 {% endcomment %}
 {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static "scss/screen.scss" %}?v=7" />
+    <link rel="stylesheet" type="text/x-scss" href="{% static "scss/screen.scss" %}?v=8" />
 {% endcompress %}
 {% if .Site.Params.noSEO %}
     <meta name="robots" content="noindex, nofollow">
