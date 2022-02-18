@@ -21,16 +21,8 @@
 <link rel="apple-touch-icon" href="{% static '/images/favicon/favicon-180.png' %}" sizes="180x180">
 <!-- macOS -->
 <link rel="mask-icon" href="{% static '/images/favicon/pinned_icon.svg' %}" color="#333333">
-
-{% comment %}
-{{ $sass := resources.Get "sass/main.scss" }}
-{{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
-{{ $style := $sass | resources.ToCSS $options | resources.Fingerprint }}
-{% endcomment %}
 {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static "scss/screen.scss" %}?v=9" />
+    <link rel="stylesheet" type="text/x-scss" href="{% static "scss/screen.scss" %}?v=10" />
 {% endcompress %}
-{% if .Site.Params.noSEO %}
-    <meta name="robots" content="noindex, nofollow">
-{% endif %}
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.js"></script>
+<script src="https://kit.fontawesome.com/ea942b1dc0.js" crossorigin="anonymous"></script>

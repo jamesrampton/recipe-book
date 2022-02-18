@@ -7,12 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>{{ object.title }}</h2>
-                <p><a href="javascript:void(0)" id="cook">Cook</a></p>
-                <p>Serves: <strong>{{ object.serves }}</strong></p>
-                <p>Prep and cooking time: <strong>{{ object.prep_and_cooking_time }} minutes</strong></p>
-                <p>Carb portions: <strong>{{ object.display_carb_portions }}</strong></p>
-                <p><strong>{{ object.diet|capfirst }}</strong></p>
+                <h2>{{ object.title }}<small><br>{{ object.diet|capfirst }}</small></h2>
+                <p><strong></strong></p>
+                <p><a href="javascript:void(0)" id="cook"><i class="fa fa-play-circle"></i> Cook</a></p>
+                <p><i class="fa fa-user-group"></i> Serves: <strong>{{ object.serves }}</strong></p>
+                <p><i class="fa fa-clock"></i> Prep and cooking time: <strong>{{ object.prep_and_cooking_time }}m</strong></p>
+                <p><i class="fa fa-cubes"></i> Carb portions: <strong>{{ object.display_carb_portions }}</strong></p>
+                
                 <hr>
 
                 {% include 'includes/recipe_ingredients_by_location.html' %}
@@ -31,7 +32,7 @@
     </div>
 
     <div class="cook-modal" id="cook-modal">
-        <a href="javascript:void(0)" id="modal_close"></a>
+        <a href="javascript:void(0)" id="modal_close"><i class="fa fa-circle-xmark"></i><span class="sr-only">Close</span></a>
         <div id="modal_ingredients" class="active">
             {% include 'includes/recipe_ingredients_by_team.html' %}
         </div>
@@ -43,7 +44,7 @@
             </ol>
         </div>
         <div class="modal_tab_selector">
-            <a id="ingredients_tab_link" href="javascript:void(0)">ingredients</a> <a id="method_tab_link" href="javascript:void(0)">method</a>
+            <a id="ingredients_tab_link" href="javascript:void(0)"><i class="fa fa-carrot"></i><span class="sr-only">ingredients</span></a> <a id="method_tab_link" href="javascript:void(0)"><i class="fa fa-mortar-pestle"></i><span class="sr-only">method</span></a>
         </div>
     </div>
     <script>
