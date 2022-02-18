@@ -23,6 +23,18 @@ $colour_black: #000000;
 $colour_accent: #20c997;
 $colour_accent_alt: #20c997;
 
+$colour_pink: #ffb3ba;
+$colour_orange: #ffdfba;
+$colour_yellow: #ffffba;
+$colour_green: #baffc9;
+$colour_blue: #bae1ff;
+
+$colour_pink__light: lighten($colour_pink, 10%);
+$colour_orange__light: lighten($colour_orange, 10%);
+$colour_yellow__light: lighten($colour_yellow, 10%);
+$colour_green__light: lighten($colour_green, 10%);
+$colour_blue__light: lighten($colour_blue, 10%);
+
 // box model
 $padding: 1.5em;
 
