@@ -3,7 +3,7 @@ from recipes.models import Recipe
 
 
 class RecipeListView(ListView):
-    model = Recipe
+    queryset = Recipe.objects.order_by('-last_eaten')
 
 
 class RecipeDetailView(DetailView):
