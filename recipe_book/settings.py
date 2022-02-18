@@ -38,6 +38,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Application definition
 
 INSTALLED_APPS = [
+    'recipes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminsortable2',
     'compressor',
-    'recipes',
 ]
 
 MIDDLEWARE = [
