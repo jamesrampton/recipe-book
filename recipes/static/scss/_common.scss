@@ -51,6 +51,14 @@ img {
     height: auto;
 }
 
+.back-link {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    opacity: 0.8;
+    z-index: 10;
+}
+
 .no-overflow {
     overflow: hidden !important;
     position: relative;

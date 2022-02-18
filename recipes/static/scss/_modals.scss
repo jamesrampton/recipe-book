@@ -13,6 +13,7 @@ $tab_nav_height: 4rem;
     overflow-y: scroll;
     overflow-x: hidden;
     pointer-events: none;
+    z-index: 20;
 
     &.active {
         opacity: 1;
@@ -74,4 +75,5 @@ $tab_nav_height: 4rem;
     right: 15px;
     text-decoration: none;
     text-align: center;
+    opacity: 0.8;
 }

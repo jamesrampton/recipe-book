@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a class="back-link" href="/"><i class="fa fa-2x fa-circle-chevron-left"></i><span class="sr-only"> back to recipes</span></a>
     {% if object.image %}
         <img src="{{ object.image.url }}">
     {% endif%}
@@ -32,7 +33,7 @@
     </div>
 
     <div class="cook-modal" id="cook-modal">
-        <a href="javascript:void(0)" id="modal_close"><i class="fa fa-circle-xmark"></i><span class="sr-only">Close</span></a>
+        <a href="javascript:void(0)" id="modal_close"><i class="fa fa-2x fa-circle-xmark"></i><span class="sr-only">Close</span></a>
         <div id="modal_ingredients" class="active">
             {% include 'includes/recipe_ingredients_by_team.html' %}
         </div>
