@@ -1,9 +1,10 @@
 from django.views.generic import ListView, DetailView
+from django.db.models import F
 from recipes.models import Recipe
 
 
 class RecipeListView(ListView):
-    queryset = Recipe.objects.order_by('last_eaten')
+    queryset = Recipe.objects.all().order_by(F('last_eaten').asc(nulls_first=True))
 
 
 class RecipeDetailView(DetailView):
