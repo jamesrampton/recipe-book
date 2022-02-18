@@ -1,3 +1,3 @@
 [submodule "fonts"]
-	path = fonts
+	path = recipes/static/fonts
 	url = git@github.com:jamesrampton/recipe-book-fonts.git
