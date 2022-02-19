@@ -4,6 +4,8 @@
     <a class="back-link" href="/"><i class="fa fa-2x fa-circle-chevron-left"></i><span class="sr-only"> back to recipes</span></a>
     {% if object.image %}
         <img src="{{ object.image.url }}">
+    {% else %}
+        <br><br>
     {% endif%}
     <div class="container">
         <div class="row">
@@ -14,7 +16,7 @@
                 <p><i class="fa fa-user-group"></i> Serves: <strong>{{ object.serves }}</strong></p>
                 <p><i class="fa fa-clock"></i> Prep and cooking time: <strong>{{ object.prep_and_cooking_time }}m</strong></p>
                 <p><i class="fa fa-cubes"></i> Carb portions: <strong>{{ object.display_carb_portions }}</strong></p>
-                
+
                 <hr>
 
                 {% include 'includes/recipe_ingredients_by_location.html' %}
