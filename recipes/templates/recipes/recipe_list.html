@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block content%}
     <h1>Recipes</h1>
@@ -6,9 +7,9 @@
     {% for recipe in object_list %}
         <div class="row">
             <div class="col-3">
-                {% if recipe.image %}
-                    <img src="{{ recipe.image.url }}">
-                {% endif %}
+                {% thumbnail recipe.image "320" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
             </div>
             <div class="col-9">
                 <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>

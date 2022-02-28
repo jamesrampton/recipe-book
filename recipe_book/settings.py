@@ -37,6 +37,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Application definition
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '{}/.cache/'.format(BASE_DIR),
+    }
+}
+
 INSTALLED_APPS = [
     'recipes',
     'django.contrib.admin',
@@ -47,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminsortable2',
     'compressor',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

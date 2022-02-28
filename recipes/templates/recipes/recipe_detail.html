@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
+
 {% block root_data_attribute %}data-diet="{{ object.diet }}"{% endblock root_data_attribute %}
 {% block content %}
     <a class="back-link" href="/"><i class="fa fa-2x fa-circle-chevron-left"></i><span class="sr-only"> back to recipes</span></a>
-    {% if object.image %}
-        <img src="{{ object.image.url }}">
-    {% else %}
+    
+    {% thumbnail object.image "1000" as im %}
+        <img src="{{ im.url }}">
+    {% empty %}
         <br><br>
-    {% endif%}
+    {% endthumbnail %}
     <div class="container">
         <div class="row">
             <div class="col-12">

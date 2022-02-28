@@ -8,3 +8,4 @@ static/*
 !static/.htaccess
 logs/*
 .env
+.cache/*
