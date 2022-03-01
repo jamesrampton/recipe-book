@@ -1,4 +1,8 @@
 from collections import OrderedDict
+
+from django.conf import settings
+from django.core.files.images import ImageFile
+from django.core.files.storage import get_storage_class
 from django.db import models
 from django.urls import reverse
 
@@ -44,6 +48,14 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipe_detail", kwargs={"slug": self.slug})
+
+    def get_placeholder_image(self):
+        storage_class = get_storage_class(settings.STATICFILES_STORAGE)
+        storage = storage_class()
+        placeholder = storage.open(f"{settings.STATIC_ROOT}/images/empty_plate.jpg")
+        image = ImageFile(placeholder)
+        image.storage = storage
+        return image
 
     def __str__(self) -> str:
         return self.title
