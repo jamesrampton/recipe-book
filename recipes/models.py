@@ -1,3 +1,4 @@
+import re
 from collections import OrderedDict
 
 from django.conf import settings
@@ -81,6 +82,9 @@ class Ingredient(models.Model):
 
     class Meta:
         ordering = ['order']
+
+    def amount_with_emoji(self):
+        return re.sub("spoon[s]?", "\U0001F944", self.amount)
 
     def __str__(self) -> str:
         rep = self.name
