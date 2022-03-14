@@ -4,7 +4,7 @@
 {% block content%}
     <div class="row">
         <div class="col-12">
-            <h1>Recipes</h1>
+            <h1>Recipes <small>({{ object_list|length }})</small></h1>
         </div>
     </div>
     {% for recipe in object_list %}
