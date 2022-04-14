@@ -12,6 +12,9 @@
 
 `echo "POSTGRES_PASSWORD='db_password'" >> .env`
 
+A non-empty string evaluates to true
+`echo "DEBUG=''" >> .env` 
+
 `docker-compose build`
 
 `docker-compose up`
