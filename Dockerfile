@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 COPY . .
 RUN mkdir -p /opt/logs
-CMD [ "bash", "entrypoint.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
