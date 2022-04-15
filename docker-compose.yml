@@ -21,8 +21,6 @@ services:
     restart: always
     build:
       context: .
-    command: python manage.py runserver 0.0.0.0:8000
-    # command: gunicorn recipe_book.wsgi:application --bind 0.0.0.0:8000 --timeout 900
     volumes:
       - static:/opt/static/
       - logs:/opt/logs/
@@ -35,7 +33,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG}
+      - APP_ENV=${APP_ENV}
     depends_on:
       - db
   nginx:
