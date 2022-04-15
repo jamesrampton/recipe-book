@@ -12,7 +12,6 @@
 
 `echo "POSTGRES_PASSWORD='db_password'" >> .env`
 
-
 `echo "APP_ENV='development'" >> .env`  # Should be one of `production`, `development`, `local`
 
 `docker-compose build`
