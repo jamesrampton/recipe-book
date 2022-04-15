@@ -10,6 +10,7 @@ volumes:
 
 services:
   db:
+    container_name: recipe_book_db
     image: postgres
     volumes:
       - recipe_book_db:/var/lib/postgresql/data
@@ -18,6 +19,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
   web:
+    container_name: recipe_book_web
     restart: always
     build:
       context: .
@@ -37,6 +39,7 @@ services:
     depends_on:
       - db
   nginx:
+    container_name: recipe_book_nginx
     restart: always
     image: nginx:latest
     depends_on:
