@@ -11,5 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', login_required(RecipeListView.as_view())),
-    path('<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"),
+    path(
+        '<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
