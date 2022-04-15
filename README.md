@@ -14,6 +14,8 @@
 
 `echo "APP_ENV='development'" >> .env`  # Should be one of `production`, `development`, `local`
 
+`echo "SENTRY_DSN='https://<dsn>" >> .env`
+
 `docker-compose build`
 
 `docker-compose up`

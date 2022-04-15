@@ -7,6 +7,11 @@ from django.contrib.auth.decorators import login_required
 
 admin.site.site_header = 'Recipe Book Admin'
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -14,4 +19,5 @@ urlpatterns = [
     path(
         '<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"
     ),
+    path('sentry-debug/', login_required(trigger_error)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
