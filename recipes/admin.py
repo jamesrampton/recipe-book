@@ -1,11 +1,13 @@
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 
+from recipes.forms import IngredientForm
 from recipes.models import Ingredient, Location, Note, Recipe
 
 
 class IngredientInline(SortableInlineAdminMixin, admin.StackedInline):
     model = Ingredient
+    form = IngredientForm
     extra = 0
 
 

@@ -50,6 +50,8 @@ CACHES = {
 
 INSTALLED_APPS = [
     'recipes',
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
