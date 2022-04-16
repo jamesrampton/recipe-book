@@ -23,26 +23,26 @@ class Recipe(models.Model):
     carb_portions = models.FloatField(default=0)
     serves = models.PositiveIntegerField(default=2)
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
-    image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
+    image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
     method = models.TextField(default="Get cooking!")
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
-        ingredients = self.ingredient_set.all().order_by(att, 'order')
+        ingredients = self.ingredient_set.all().order_by(att, "order")
         for ingredient in ingredients:
             ingredients_data.setdefault(getattr(ingredient, att), []).append(ingredient)
 
         return ingredients_data
 
     def display_carb_portions(self):
-        return f'{self.carb_portions:g}'
+        return f"{self.carb_portions:g}"
 
     def get_ingredients_by_team(self):
-        return self._get_ingredients_by_attr('team')
+        return self._get_ingredients_by_attr("team")
 
     def get_ingredients_by_location(self):
-        return self._get_ingredients_by_attr('location')
+        return self._get_ingredients_by_attr("location")
 
     def get_method_lines(self):
         return [line for line in self.method.splitlines() if line]
@@ -81,7 +81,7 @@ class Ingredient(models.Model):
     order = models.PositiveIntegerField(default=0, null=False, blank=False)
 
     class Meta:
-        ordering = ['order']
+        ordering = ["order"]
 
     def amount_with_emoji(self):
         return re.sub("spoon[s]?", "\U0001F944", self.amount)
