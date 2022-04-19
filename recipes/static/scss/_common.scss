@@ -79,6 +79,7 @@ img {
     overflow: hidden !important;
     position: relative;
     height: 100vh;
+    height: -webkit-fill-available;
 }
 
 .opacity-50 {
