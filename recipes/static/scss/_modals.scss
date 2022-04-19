@@ -27,6 +27,7 @@ $tab_nav_height: 2rem;
         transition: transform 300ms ease;
         height: 100vh;
         height: -webkit-fill-available;
+        width: 100vw;
         transform: translateX(-100vw);
         overflow-y: scroll;
         position: absolute;
@@ -42,6 +43,7 @@ $tab_nav_height: 2rem;
         transition: transform 300ms ease;
         height: 100vh;
         height: -webkit-fill-available;
+        width: 100vw;
         transform: translateX(100vw);
         overflow-y: scroll;
         position: absolute;
@@ -66,7 +68,7 @@ $tab_nav_height: 2rem;
             color: $colour_main;
             text-align: center;
             text-decoration: none;
-            line-height: $tab_nav_height;
+            line-height: 4rem;
         }
     }
 }
