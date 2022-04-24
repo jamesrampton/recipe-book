@@ -10,10 +10,10 @@
     {% for recipe in object_list %}
         <div class="row">
             <div class="col-3">
-                {% thumbnail recipe.image "320" as im %}
+                {% thumbnail recipe.image "414" as im %}
                     <img src="{{ im.url }}">
                 {% empty %}
-                    {% thumbnail recipe.get_placeholder_image "320" as im %}
+                    {% thumbnail recipe.get_placeholder_image "414" as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail%}
                 {% endthumbnail %}
