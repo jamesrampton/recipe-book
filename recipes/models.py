@@ -7,6 +7,8 @@ from django.core.files.storage import get_storage_class
 from django.db import models
 from django.urls import reverse
 
+from recipes.utils import human_key
+
 
 class Recipe(models.Model):
     class Diet(models.TextChoices):
@@ -29,7 +31,8 @@ class Recipe(models.Model):
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
-        ingredients = self.ingredient_set.all().order_by(att, "order")
+        ingredients = list(self.ingredient_set.all())
+        ingredients.sort(key=lambda x: human_key(getattr(x, att)))
         for ingredient in ingredients:
             ingredients_data.setdefault(getattr(ingredient, att), []).append(ingredient)
 
