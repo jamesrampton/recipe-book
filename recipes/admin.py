@@ -18,6 +18,7 @@ class NoteInline(admin.StackedInline):
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [IngredientInline, NoteInline]
     prepopulated_fields = {"slug": ("title",)}
+    search_fields = ['title', 'ingredient__name']
 
 
 @admin.register(Location)
