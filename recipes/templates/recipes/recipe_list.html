@@ -9,18 +9,21 @@
     </div>
     {% for recipe in object_list %}
         <div class="row">
-            <div class="col-3">
-                {% thumbnail recipe.image "414" as im %}
-                    <img src="{{ im.url }}">
-                {% empty %}
-                    {% thumbnail recipe.get_placeholder_image "414" as im %}
-                        <img src="{{ im.url }}">
-                    {% endthumbnail%}
-                {% endthumbnail %}
-            </div>
-            <div class="col-9">
-                <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>
-            </div>
+            <a href="{{ recipe.get_absolute_url }}">
+                <div class="col-9-sm">
+                    <p>{{ recipe.title }}</p>
+                </div>
+                <div class="col-3-sm">
+                    {% thumbnail recipe.image "414" as im %}
+                        <img class="border__radius-4" src="{{ im.url }}">
+                    {% empty %}
+                        {% thumbnail recipe.get_placeholder_image "414" as im %}
+                            <img class="border__radius-4" src="{{ im.url }}">
+                        {% endthumbnail%}
+                    {% endthumbnail %}
+                </div>
+            </a>
         </div>
+        <hr>
     {% endfor %}
 {% endblock content %}
