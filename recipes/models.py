@@ -27,7 +27,7 @@ class Recipe(models.Model):
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
-    method = models.TextField(default="Get cooking!")
+    method = models.TextField(null=True, blank=True)
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
