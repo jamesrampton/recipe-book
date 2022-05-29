@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'adminsortable2',
     'compressor',
     'rest_framework',
+    'rest_framework.authtoken',
     'sorl.thumbnail',
 ]
 
@@ -166,6 +167,21 @@ COMPRESS_PRECOMPILERS = (('text/x-scss', 'django_libsass.SassCompiler'),)
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+# Rest framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.HTMLFormRenderer',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 # Sentry settings
 SENTRY_DSN = os.environ.get('SENTRY_DSN')
 

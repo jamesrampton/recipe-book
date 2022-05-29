@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path
+from recipes.api_v1.views.auth_views import LoginView, LogoutView
 from recipes.api_v1.views.recipe_views import RecipeViewSet
 from recipes.views import RecipeDetailView, RecipeListView
 from rest_framework import routers, serializers, viewsets
@@ -21,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', login_required(RecipeListView.as_view())),
+    path('api/v1/auth/login/', LoginView.as_view(), name='api_login'),
+    path('api/v1/auth/logout/', LogoutView.as_view(), name='api_logout'),
     path('api/v1/', include(router.urls)),
     path(
         '<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"
