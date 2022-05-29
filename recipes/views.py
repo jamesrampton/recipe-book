@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView
 from django.db.models import F
+from django.views.generic import DetailView, ListView
+
 from recipes.models import Recipe
 
 
