@@ -4,7 +4,9 @@ from recipes.models import Recipe
 
 
 class RecipeListView(ListView):
-    queryset = Recipe.objects.all().order_by(F('last_eaten').asc(nulls_first=True))
+    queryset = Recipe.objects.filter(archived=False).order_by(
+        F("last_eaten").asc(nulls_first=True)
+    )
 
 
 class RecipeDetailView(DetailView):
