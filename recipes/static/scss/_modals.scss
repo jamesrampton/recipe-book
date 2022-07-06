@@ -1,4 +1,4 @@
-$tab_nav_height: 4rem;
+$tab_nav_height: 2rem;
 
 .cook-modal {
     opacity: 0;
@@ -7,6 +7,7 @@ $tab_nav_height: 4rem;
     width: 100vw;
     top: 0;
     height: 100vh;
+    height: -webkit-fill-available;
     background: $colour_white;
     transition: transform 300ms ease, opacity 300ms ease;
     transform: translateY(100vh);
@@ -25,6 +26,8 @@ $tab_nav_height: 4rem;
         padding: 2rem 2rem $tab_nav_height 2rem;
         transition: transform 300ms ease;
         height: 100vh;
+        height: -webkit-fill-available;
+        width: 100vw;
         transform: translateX(-100vw);
         overflow-y: scroll;
         position: absolute;
@@ -39,6 +42,8 @@ $tab_nav_height: 4rem;
         padding: 2rem 2rem $tab_nav_height 2rem;
         transition: transform 300ms ease;
         height: 100vh;
+        height: -webkit-fill-available;
+        width: 100vw;
         transform: translateX(100vw);
         overflow-y: scroll;
         position: absolute;
@@ -63,7 +68,7 @@ $tab_nav_height: 4rem;
             color: $colour_main;
             text-align: center;
             text-decoration: none;
-            line-height: $tab_nav_height;
+            line-height: 4rem;
         }
     }
 }

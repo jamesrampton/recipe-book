@@ -7,6 +7,8 @@ from django.core.files.storage import get_storage_class
 from django.db import models
 from django.urls import reverse
 
+from recipes.utils import human_key
+
 
 class Recipe(models.Model):
     class Diet(models.TextChoices):
@@ -25,11 +27,13 @@ class Recipe(models.Model):
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
-    method = models.TextField(default="Get cooking!")
+    method = models.TextField(null=True, blank=True)
+    archived = models.BooleanField(default=False)
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
-        ingredients = self.ingredient_set.all().order_by(att, "order")
+        ingredients = list(self.ingredient_set.all())
+        ingredients.sort(key=lambda x: human_key(getattr(x, att)))
         for ingredient in ingredients:
             ingredients_data.setdefault(getattr(ingredient, att), []).append(ingredient)
 
