@@ -28,6 +28,7 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
     method = models.TextField(null=True, blank=True)
+    archived = models.BooleanField(default=False)
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
