@@ -11,7 +11,10 @@
         <div class="row">
             <a href="{{ recipe.get_absolute_url }}">
                 <div class="col-9-sm">
-                    <p>{{ recipe.title }}</p>
+                    <p>
+                    {% if recipe.favourite %}<i class="fa fa-heart"></i>{% endif %}
+                        {{ recipe.title }}
+                    </p>
                 </div>
                 <div class="col-3-sm">
                     {% thumbnail recipe.recipeimage_set.last.image "414" as im %}

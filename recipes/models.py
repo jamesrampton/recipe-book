@@ -28,6 +28,7 @@ class Recipe(models.Model):
     last_eaten = models.DateField(null=True, blank=True)
     method = models.TextField(null=True, blank=True)
     archived = models.BooleanField(default=False)
+    favourite = models.BooleanField(default=False)
 
     def _get_ingredients_by_attr(self, att):
         ingredients_data = OrderedDict()
