@@ -110,3 +110,6 @@ class RecipeImage(models.Model):
 
     class Meta:
         ordering = ["date"]
+
+    def __str__(self):
+        return f"{self.recipe.title} - {self.date}"
