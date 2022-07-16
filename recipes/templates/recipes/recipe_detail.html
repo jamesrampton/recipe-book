@@ -5,7 +5,7 @@
 {% block content %}
     <a class="back-link" href="/"><i class="fa fa-2x fa-circle-chevron-left"></i><span class="sr-only"> back to recipes</span></a>
 
-    {% thumbnail object.image "1000" as im %}
+    {% thumbnail object.recipeimage_set.last.image "1000" as im %}
         <img src="{{ im.url }}">
     {% empty %}
         {% thumbnail recipe.get_placeholder_image "1000" as im %}

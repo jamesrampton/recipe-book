@@ -1,7 +1,7 @@
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 
-from recipes.models import Ingredient, Location, Note, Recipe
+from recipes.models import Ingredient, Location, Note, Recipe, RecipeImage
 
 
 class IngredientInline(SortableInlineAdminMixin, admin.StackedInline):
@@ -14,9 +14,14 @@ class NoteInline(admin.StackedInline):
     extra = 0
 
 
+class RecipeImageInline(admin.StackedInline):
+    model = RecipeImage
+    extra = 0
+
+
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    inlines = [IngredientInline, NoteInline]
+    inlines = [RecipeImageInline, IngredientInline, NoteInline]
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ['title', 'ingredient__name']
 

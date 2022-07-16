@@ -101,3 +101,12 @@ class Note(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     date = models.DateField()
     text = models.TextField()
+
+
+class RecipeImage(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
+
+    class Meta:
+        ordering = ["date"]
