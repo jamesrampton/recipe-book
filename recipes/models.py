@@ -25,7 +25,6 @@ class Recipe(models.Model):
     carb_portions = models.FloatField(default=0)
     serves = models.PositiveIntegerField(default=2)
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
-    image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
     last_eaten = models.DateField(null=True, blank=True)
     method = models.TextField(null=True, blank=True)
     archived = models.BooleanField(default=False)
