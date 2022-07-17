@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView
 from django.db.models import F
+from django.views.generic import DetailView, ListView, TemplateView
+
 from recipes.models import Recipe
 
 
@@ -11,3 +12,9 @@ class RecipeListView(ListView):
 
 class RecipeDetailView(DetailView):
     model = Recipe
+
+
+class RecipeGalleryView(DetailView):
+    model = Recipe
+
+    template_name = 'recipes/gallery.html'

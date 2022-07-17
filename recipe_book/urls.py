@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
-from recipes.views import RecipeListView, RecipeDetailView
 from django.contrib.auth.decorators import login_required
+from django.urls import include, path
 
-admin.site.site_header = 'Recipe Book Admin'
+from recipes.views import RecipeDetailView, RecipeGalleryView, RecipeListView
+
+admin.site.site_header = "Recipe Book Admin"
 
 
 def trigger_error(request):
@@ -13,11 +14,16 @@ def trigger_error(request):
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', login_required(RecipeListView.as_view())),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", login_required(RecipeListView.as_view())),
     path(
-        '<slug:slug>', login_required(RecipeDetailView.as_view()), name="recipe_detail"
+        "<slug:slug>", login_required(RecipeDetailView.as_view()), name="recipe_detail"
     ),
-    path('sentry-debug/', login_required(trigger_error)),
+    path(
+        "<slug:slug>/gallery/",
+        login_required(RecipeGalleryView.as_view()),
+        name="recipe_gallery",
+    ),
+    path("sentry-debug/", login_required(trigger_error)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -21,6 +21,7 @@
                 <p><i class="fa fa-user-group"></i> Serves: <strong>{{ object.serves }}</strong></p>
                 <p><i class="fa fa-clock"></i> Prep and cooking time: <strong>{{ object.prep_and_cooking_time }}m</strong></p>
                 <p><i class="fa fa-cubes"></i> Carb portions: <strong>{{ object.display_carb_portions }}</strong></p>
+                <p><i class="fa fa-photo"></i> <a href="{% url 'recipe_gallery' object.slug %}">Gallery</a></p>
                 <p><i class="fa fa-pen-to-square"></i> <a href="{% url 'admin:recipes_recipe_change' object.id %}">Edit</a></p>
                 <hr>
 
