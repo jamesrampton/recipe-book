@@ -109,7 +109,7 @@ class RecipeImage(models.Model):
     image = models.ImageField(upload_to="recipe_images/", null=True, blank=True)
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["-date"]
 
     def __str__(self):
         return f"{self.recipe.title} - {self.date}"
