@@ -42,16 +42,17 @@
     <script>
         function liveSearch() {
             let recipes = document.querySelectorAll('.recipe');
-            let searchQuery = document.getElementById("searchbox").value;
+            let searchQuery = document.getElementById("searchbox").value.toLowerCase();
             for (var i = 0; i < recipes.length; i++) {
                 let show = false;
-                if ( recipes[i].innerText.toLowerCase().includes(searchQuery.toLowerCase()) ) {
+                let recipe = recipes[i];
+                if ( recipe.innerText.toLowerCase().includes(searchQuery) ) {
                     show = true;
                 }
-                if ( recipes[i].getAttribute('data-ingredients').toLowerCase().includes(searchQuery.toLowerCase()) ) {
+                if ( recipe.getAttribute('data-ingredients').toLowerCase().includes(searchQuery) ) {
                     show = true;
                 }
-                recipes[i].classList.toggle("is-hidden", !show);
+                recipe.classList.toggle("is-hidden", !show);
             }
         }
     </script>
