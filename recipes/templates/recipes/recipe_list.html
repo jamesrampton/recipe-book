@@ -41,13 +41,16 @@
     {% endfor %}
     <script>
         function liveSearch() {
-            let recipes = document.querySelectorAll('.recipe')
+            let recipes = document.querySelectorAll('.recipe');
             let searchQuery = document.getElementById("searchbox").value;
             for (var i = 0; i < recipes.length; i++) {
                 let show = false;
-                if( recipes[i].innerText.toLowerCase().includes(searchQuery.toLowerCase()) ) {
+                if ( recipes[i].innerText.toLowerCase().includes(searchQuery.toLowerCase()) ) {
                     show = true;
-                };
+                }
+                if ( recipes[i].getAttribute('data-ingredients').toLowerCase().includes(searchQuery.toLowerCase()) ) {
+                    show = true;
+                }
                 recipes[i].classList.toggle("is-hidden", !show);
             }
         }
