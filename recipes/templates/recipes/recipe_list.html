@@ -18,7 +18,7 @@
         </div>
     </div>
     {% for recipe in object_list %}
-        <div class="row recipe">
+        <div class="row recipe" data-ingredients="{% for ingredient in recipe.ingredient_set.all %}{{ ingredient.name }} {% endfor %}">
             <a href="{{ recipe.get_absolute_url }}">
                 <div class="col-9-sm">
                     <p>
@@ -44,12 +44,11 @@
             let recipes = document.querySelectorAll('.recipe')
             let searchQuery = document.getElementById("searchbox").value;
             for (var i = 0; i < recipes.length; i++) {
-                let isHidden = false;
-                if(recipes[i].innerText.toLowerCase()
-                        .includes(searchQuery.toLowerCase())) {
-                        isHidden = true;
-                    };
-                recipes[i].classList.toggle("is-hidden", !isHidden);
+                let show = false;
+                if( recipes[i].innerText.toLowerCase().includes(searchQuery.toLowerCase()) ) {
+                    show = true;
+                };
+                recipes[i].classList.toggle("is-hidden", !show);
             }
         }
     </script>
