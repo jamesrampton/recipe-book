@@ -7,12 +7,22 @@
             <h1>Recipes <small>({{ object_list|length }})</small></h1>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <label for="searchbox">Search</label>
+            <input
+                type="search"
+                oninput="liveSearch()"
+                id="searchbox"
+            >
+        </div>
+    </div>
     {% for recipe in object_list %}
-        <div class="row">
+        <div class="row recipe">
             <a href="{{ recipe.get_absolute_url }}">
                 <div class="col-9-sm">
                     <p>
-                    {% if recipe.favourite %}<i class="fa fa-heart"></i>{% endif %}
+                        {% if recipe.favourite %}<i class="fa fa-heart"></i>{% endif %}
                         {{ recipe.title }}
                     </p>
                 </div>
@@ -26,7 +36,21 @@
                     {% endthumbnail %}
                 </div>
             </a>
+            <hr>
         </div>
-        <hr>
     {% endfor %}
+    <script>
+        function liveSearch() {
+            let recipes = document.querySelectorAll('.recipe')
+            let searchQuery = document.getElementById("searchbox").value;
+            for (var i = 0; i < recipes.length; i++) {
+                if(recipes[i].innerText.toLowerCase()
+                        .includes(searchQuery.toLowerCase())) {
+                        recipes[i].classList.remove("is-hidden");
+                    } else {
+                        recipes[i].classList.add("is-hidden");
+                    }
+            }
+        }
+    </script>
 {% endblock content %}
