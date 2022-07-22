@@ -112,3 +112,10 @@ small {
 .is-hidden {
     display: none;
 }
+
+input {
+    border: 1px solid $colour_main;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 1em;
+}
