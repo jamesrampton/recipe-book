@@ -44,12 +44,12 @@
             let recipes = document.querySelectorAll('.recipe')
             let searchQuery = document.getElementById("searchbox").value;
             for (var i = 0; i < recipes.length; i++) {
+                let isHidden = false;
                 if(recipes[i].innerText.toLowerCase()
                         .includes(searchQuery.toLowerCase())) {
-                        recipes[i].classList.remove("is-hidden");
-                    } else {
-                        recipes[i].classList.add("is-hidden");
-                    }
+                        isHidden = true;
+                    };
+                recipes[i].classList.toggle("is-hidden", !isHidden);
             }
         }
     </script>
