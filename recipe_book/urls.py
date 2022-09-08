@@ -18,7 +18,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", login_required(RecipeListView.as_view())),
     path(
-        "<slug:slug>", login_required(RecipeDetailView.as_view()), name="recipe_detail"
+        "<slug:slug>/", login_required(RecipeDetailView.as_view()), name="recipe_detail"
     ),
     path(
         "<slug:slug>/gallery/",
