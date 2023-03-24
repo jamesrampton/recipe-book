@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path
 
-from recipe_book.views import manifest, offline, service_worker
+from recipe_book.views import manifest
 from recipes.views import RecipeDetailView, RecipeGalleryView, RecipeListView
 
 admin.site.site_header = "Recipe Book Admin"
