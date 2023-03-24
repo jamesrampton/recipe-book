@@ -10,16 +10,14 @@ admin.site.site_header = "Recipe Book Admin"
 
 
 def trigger_error(request):
-    division_by_zero = 1 / 0
+    division_by_zero = 1 / 0  # noqa
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", login_required(RecipeListView.as_view())),
-    path(
-        "<slug:slug>/", login_required(RecipeDetailView.as_view()), name="recipe_detail"
-    ),
+    path("<slug:slug>/", login_required(RecipeDetailView.as_view()), name="recipe_detail"),
     path(
         "<slug:slug>/gallery/",
         login_required(RecipeGalleryView.as_view()),
