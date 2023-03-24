@@ -86,11 +86,12 @@
                 highlightCurrentStep();
             });
 
-            var $firstStep = $methodTab.find('li:first');
-            var $lastStep = $methodTab.find('li:last');
-            var cssStringFirst = 'calc(50vh - ' + $firstStep.outerHeight() + 'px)'
-            var cssStringLast = 'calc(50vh - ' + $lastStep.outerHeight() + 'px)'
-            $methodTab.css({'padding-top': cssStringFirst, 'padding-bottom': cssStringLast});
+            // var $firstStep = $methodTab.find('li:first');
+            // var $lastStep = $methodTab.find('li:last');
+            // var cssStringFirst = 'calc(50vh - ' + $firstStep.outerHeight() + 'px)'
+            // var cssStringLast = 'calc(50vh - ' + $lastStep.outerHeight() + 'px)'
+            // $methodTab.css({'padding-top': cssStringFirst, 'padding-bottom': cssStringLast});
+            $methodTab.css({'padding-top': '50vh', 'padding-bottom': '50vh'});
 
             $methodTab.on('scroll', function(){
                 highlightCurrentStep();
