@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" {% block root_data_attribute %}{% endblock root_data_attribute %}>
+<html lang="en" >
     <head>
         {% include "includes/head.html" %}
     </head>
-    <body ontouchstart=””>
+    <body ontouchstart="" {% block root_data_attribute %}{% endblock root_data_attribute %}>
         {% comment %} <div class="container">
             <div class="row">
                 <div class="col-12 header-col">
