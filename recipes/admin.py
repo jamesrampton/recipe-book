@@ -1,10 +1,10 @@
-from adminsortable2.admin import SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableStackedInline
 from django.contrib import admin
 
 from recipes.models import Ingredient, Location, Note, Recipe, RecipeImage
 
 
-class IngredientInline(SortableInlineAdminMixin, admin.StackedInline):
+class IngredientInline(SortableStackedInline):
     model = Ingredient
     extra = 0
 
@@ -20,10 +20,10 @@ class RecipeImageInline(admin.StackedInline):
 
 
 @admin.register(Recipe)
-class RecipeAdmin(admin.ModelAdmin):
+class RecipeAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [RecipeImageInline, IngredientInline, NoteInline]
     prepopulated_fields = {"slug": ("title",)}
-    search_fields = ['title', 'ingredient__name']
+    search_fields = ["title", "ingredient__name"]
 
 
 @admin.register(Location)
