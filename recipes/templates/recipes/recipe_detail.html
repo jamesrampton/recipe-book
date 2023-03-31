@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-12">
                 <h2>{{ object.title }}<small><br>{{ object.diet|capfirst }}</small></h2>
-                <p><strong></strong></p>
+                <p><i class="fa fa-calendar"></i> Last eaten: <strong>{{ object.last_eaten }}</strong></p>
                 <p><i class="fa fa-play-circle"></i> <a href="javascript:void(0)" id="cook">Cook</a></p>
                 <p><i class="fa fa-user-group"></i> Serves: <strong>{{ object.serves }}</strong></p>
                 <p><i class="fa fa-clock"></i> Prep and cooking time: <strong>{{ object.prep_and_cooking_time }}m</strong></p>
