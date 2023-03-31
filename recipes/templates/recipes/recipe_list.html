@@ -21,10 +21,8 @@
         <div class="row recipe" data-ingredients="{% for ingredient in recipe.ingredient_set.all %}{{ ingredient.name }} {% endfor %}">
             <a href="{{ recipe.get_absolute_url }}">
                 <div class="col-9-sm">
-                    <p>
                         {% if recipe.favourite %}<i class="fa fa-heart"></i>{% endif %}
                         {{ recipe.title }}
-                    </p>
                 </div>
                 <div class="col-3-sm">
                     {% thumbnail recipe.recipeimage_set.first.image "414" as im %}
