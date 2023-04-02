@@ -6,10 +6,10 @@
     <a class="back-link" href="/"><i class="fa fa-2x fa-circle-chevron-left"></i><span class="sr-only"> back to recipes</span></a>
 
     {% thumbnail object.recipeimage_set.first.image "1000" as im %}
-        <img src="{{ im.url }}">
+        <img class="hero-image" src="{{ im.url }}">
     {% empty %}
         {% thumbnail recipe.get_placeholder_image "1000" as im %}
-            <img src="{{ im.url }}">
+            <img class="hero-image" src="{{ im.url }}">
         {% endthumbnail%}
     {% endthumbnail %}
     <div class="container">

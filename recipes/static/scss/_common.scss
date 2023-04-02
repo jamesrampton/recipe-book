@@ -41,7 +41,7 @@ a:visited {
   }
 }
 
-a:h§ {
+a:hover {
   background-color: rgba($colour_accent, 0.2);
 }
 
@@ -62,6 +62,11 @@ li::marker {
 img {
   max-width: 100%;
   height: auto;
+
+  &.hero-image {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .back-link {
