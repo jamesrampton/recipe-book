@@ -26,10 +26,10 @@
                 </div>
                 <div class="col-3-sm">
                     {% thumbnail recipe.recipeimage_set.first.image "414" as im %}
-                        <img class="border__radius-4" src="{{ im.url }}" alt="A {{ recipe.title }} serving suggestion">
+                        <img loading="lazy" class="border__radius-4" src="{{ im.url }}" alt="A {{ recipe.title }} serving suggestion">
                     {% empty %}
                         {% thumbnail recipe.get_placeholder_image "414" as im %}
-                            <img class="border__radius-4" src="{{ im.url }}">
+                            <img loading="lazy" class="border__radius-4" src="{{ im.url }}">
                         {% endthumbnail%}
                     {% endthumbnail %}
                 </div>
