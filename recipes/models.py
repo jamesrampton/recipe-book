@@ -23,6 +23,7 @@ class Recipe(models.Model):
         help_text="How long this recipe will take to prepare and cook (expressed in minutes)",
     )
     carb_portions = models.FloatField(default=0)
+    calories = models.PositiveIntegerField(null=True, blank=True)
     serves = models.PositiveIntegerField(default=2)
     diet = models.CharField(max_length=11, choices=Diet.choices, default="vegan")
     last_eaten = models.DateField(null=True, blank=True)
@@ -75,9 +76,7 @@ class Location(models.Model):
 
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    location = models.ForeignKey(
-        Location, on_delete=models.SET_NULL, null=True, blank=True
-    )
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=128)
     amount = models.CharField(max_length=128, null=True, blank=True)
     preparation = models.CharField(max_length=128, null=True, blank=True)
