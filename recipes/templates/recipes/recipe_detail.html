@@ -25,7 +25,7 @@
                 {% if object.recipeimage_set.all.count %}
                 <p><i class="fa fa-photo"></i> <a href="{% url 'recipe_gallery' object.slug %}">Gallery</a> ({{ object.recipeimage_set.all.count }} image{{ object.recipeimage_set.all.count|pluralize }})</p>
                 {% endif %}
-                <p><i class="fa fa-pen-to-square"></i> <a href="{% url 'admin:recipes_recipe_change' object.id %}">Edit</a></p>
+                <p hx-boost="false"><i class="fa fa-pen-to-square"></i> <a href="{% url 'admin:recipes_recipe_change' object.id %}">Edit</a></p>
                 <hr>
 
                 {% include 'includes/recipe_ingredients_by_location.html' %}
